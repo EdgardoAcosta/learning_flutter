@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "732760338345",
+    "firebase_url": "https://flash-chat-ef91a.firebaseio.com",
+    "project_id": "flash-chat-ef91a",
+    "storage_bucket": "flash-chat-ef91a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732760338345:android:c7702b025fa596b4",
+        "android_client_info": {
+          "package_name": "com.edgardoacostaleal.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732760338345-nufq241atk9k82k4g8r08ki4h3ce2q8j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW_RVXJoWCjmFaxjHCviLtJIgG8PY4AMk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732760338345-nufq241atk9k82k4g8r08ki4h3ce2q8j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
