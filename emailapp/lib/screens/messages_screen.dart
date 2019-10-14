@@ -1,4 +1,3 @@
-import 'package:emailapp/message_list.dart';
 import 'package:emailapp/widgets/app_drawer.dart';
 import 'package:emailapp/widgets/compose_button.dart';
 import 'package:flutter/material.dart';
