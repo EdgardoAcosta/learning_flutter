@@ -1,12 +1,15 @@
 import 'package:emailapp/screens/message_detail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:emailapp/models/message.dart';
-import 'package:emailapp/services/networking.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class MessageList extends StatefulWidget {
+
+  final String status;
+
+  const MessageList({ this.status = 'important'});
+
   @override
   _MessageListState createState() => _MessageListState();
 }
@@ -17,7 +20,7 @@ class _MessageListState extends State<MessageList> {
   @override
   void initState() {
     super.initState();
-    messages = Message.brows();
+    messages = Message.browse(status:widget.status);
   }
 
   @override
@@ -72,10 +75,10 @@ class _MessageListState extends State<MessageList> {
                           caption: 'Delete',
                           color: Colors.red,
                           icon: Icons.delete,
-                          onTap: () => {
+                          onTap: () {
                             setState(() {
                               messages.removeAt(index);
-                            })
+                            });
                           },
                         ),
                       ],

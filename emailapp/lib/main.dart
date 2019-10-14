@@ -1,5 +1,6 @@
-import 'package:emailapp/screens/messages_screen.dart';
 import 'package:flutter/material.dart';
+
+import 'app.dart';
 
 void main() => runApp(EmailApp());
 
@@ -10,10 +11,10 @@ class EmailApp extends StatelessWidget {
     return MaterialApp(
       title: 'Email App',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
+        primarySwatch: Colors.teal,
         accentColor: Colors.redAccent,
       ),
-      home: MessagesScreen(),
+      home: App(),
     );
   }
 }

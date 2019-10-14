@@ -12,9 +12,11 @@ class Message {
   factory Message.fromJson(Map<String, dynamic> json) =>
       _$MessageFromJson(json);
 
-  static Future<List<Message>> brows() async {
+  static Future<List<Message>> browse({status = 'important'}) async {
+
+    String url = (status == 'important') ? 'http://www.mocky.io/v2/5da4d12835000060004a7913' : 'http://www.mocky.io/v2/5da25fab2f00006600f41947';
     NetworkHelper messagesList =
-        NetworkHelper('http://www.mocky.io/v2/5da25fab2f00006600f41947');
+        NetworkHelper(url);
     List collation = await messagesList.getData();
     if (collation == null) {
       print('Error on request');
