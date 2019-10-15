@@ -10,11 +10,7 @@ class Contact {
         email = json['email'],
         phone = json['phone'];
 
-
-
-        
-
-  static Future browes() async {
+  static Future browse({query}) async {
     NetworkHelper contactsList =
         NetworkHelper('https://jsonplaceholder.typicode.com/users');
     List collation = await contactsList.getData();
@@ -22,10 +18,13 @@ class Contact {
       print('Error on request');
       //TODO:Handel error for user
     }
+    Iterable<Contact> _contacts = collation.map((_) => Contact.fromJson(_));
 
-    List<Contact> _messages =
-        collation.map((json) => Contact.fromJson(json)).toList();
+    if (query != null && query.isNotEmpty) {
+      _contacts = _contacts
+          .where((contact) => contact.name.toLowerCase().contains(query));
+    }
 
-    return _messages;
+    return _contacts.toList();
   }
 }

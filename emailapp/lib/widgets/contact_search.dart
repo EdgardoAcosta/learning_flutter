@@ -1,19 +1,22 @@
 import 'package:emailapp/models/contact.dart';
+import 'package:emailapp/services/contact_manager.dart';
+import 'package:emailapp/widgets/contact_list_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ContactSearch extends SearchDelegate {
-
-  final manager;
+  final ContactManager manager;
 
   ContactSearch({this.manager});
-  
+
   @override
   List<Widget> buildActions(BuildContext context) {
     return [
       IconButton(
         icon: Icon(Icons.clear),
-        onPressed: () {},
+        onPressed: () {
+          query = '';
+        },
       )
     ];
   }
@@ -39,42 +42,23 @@ class ContactSearch extends SearchDelegate {
       );
     }
 
-    return StreamBuilder<List<Contact>>(
-          stream: manager.contactListNow,
-          builder:
-              (BuildContext context, AsyncSnapshot<List<Contact>> snapshot) {
-            List<Contact> contacts = snapshot.data;
+    return ContactListBuilder(
+      stream: manager.filterCollection(query: query),
+      builder: (context, contacts) {
+        ListView.separated(
+          itemCount: contacts.length,
+          itemBuilder: (BuildContext context, int index) {
+            Contact _contact = contacts[index];
 
-            switch (snapshot.connectionState) {
-              case ConnectionState.none:
-              case ConnectionState.waiting:
-              case ConnectionState.active:
-                return Center(
-                  child: SpinKitWanderingCubes(
-                    color: Colors.blueAccent,
-                    size: 100,
-                  ),
-                );
-              case ConnectionState.done:
-                return ListView.separated(
-                  itemCount: contacts.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    Contact _contact = contacts[index];
-
-                    return ListTile(
-                      title: Text(_contact.name),
-                      subtitle: Text(_contact.email),
-                    );
-                  },
-                  separatorBuilder: (context, index) => Divider(),
-                );
-
-              default:
-                return Center(
-                  child: Text('Error'),
-                );
-            }
-          });
+            return ListTile(
+              title: Text(_contact.name),
+              subtitle: Text(_contact.email),
+            );
+          },
+          separatorBuilder: (context, index) => Divider(),
+        );
+      },
+    );
   }
 
   @override
