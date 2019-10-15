@@ -10,7 +10,7 @@ class Contact {
         email = json['email'],
         phone = json['phone'];
 
-  static Future browse({query}) async {
+  static Future<List<Contact>> browse({query}) async {
     NetworkHelper contactsList =
         NetworkHelper('https://jsonplaceholder.typicode.com/users');
     List collation = await contactsList.getData();
