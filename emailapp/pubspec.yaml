@@ -18,6 +18,7 @@ dependencies:
   flutter_spinkit: "^4.0.0"
   font_awesome_flutter:
   flutter_slidable:
+  rxdart:
 
 dev_dependencies:
   flutter_test:
