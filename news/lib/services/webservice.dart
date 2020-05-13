@@ -18,7 +18,7 @@ class Webservice {
     }
   }
 
-  Future<List<NewsArticle>> fetchHeadlineByKyWord(String keywords) async {
+  Future<List<NewsArticle>> fetchHeadlinesByKeyword(String keywords) async {
     var networkHelper = NetworkHelper(kHeadlinesSearchURL + keywords);
 
     try {

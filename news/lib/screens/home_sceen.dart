@@ -18,18 +18,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Widget _buildList(NewArticleListViewModel vm) {
-    switch (vm.loadingStatus) {
-      case LoadingStatus.searching:
-        return Align(
-          child: CircularProgressIndicator(),
-        );
-      case LoadingStatus.empty:
-        return Align(
-          child: Text('No Results'),
-        );
-
-      case LoadingStatus.completed:
-        return Expanded(child: NewsList(articles: vm.articles));
+  switch(vm.loadingStatus) {
+      case LoadingStatus.searching: 
+        return Align(child: CircularProgressIndicator()); 
+      case LoadingStatus.empty: 
+        return Align(child: Text("No results found!"));
+      case LoadingStatus.completed: 
+        return Expanded(child: NewsList(
+          articles: vm.articles, 
+          ));
     }
   }
 
